@@ -1,4 +1,4 @@
-<img width="680" height="437" alt="image" src="https://github.com/user-attachments/assets/e6db1b2a-e67f-4e1f-8416-0b183f4a0b49" />## EXNO-3-DS
+## EXNO-3-DS
 
 # AIM:
 To read the given data and perform Feature Encoding and Transformation process and save the data to a file.
@@ -123,6 +123,116 @@ df.skew()
 ```
 <img width="358" height="249" alt="image" src="https://github.com/user-attachments/assets/baba7fa5-d00f-40ef-963c-94bd517c5394" />
 
+```
+np.log(df["Highly Positive Skew"])
+```
+<img width="306" height="565" alt="image" src="https://github.com/user-attachments/assets/8ca48100-7e4a-4748-b6b3-9657a341cc44" />
+
+```
+np.reciprocal(df["Moderate Positive Skew"])
+```
+<img width="311" height="556" alt="image" src="https://github.com/user-attachments/assets/dcf7a6f2-9d47-4c4b-b5db-30b569ff4b12" />
+
+```
+np.sqrt(df["Highly Positive Skew"])
+```
+<img width="372" height="702" alt="image" src="https://github.com/user-attachments/assets/aa959fd2-3917-4640-bec1-65ea2bcd565d" />
+
+```
+np.square(df["Highly Positive Skew"])
+```
+<img width="360" height="698" alt="image" src="https://github.com/user-attachments/assets/a33ee4b6-5bff-49cb-b5d4-7a38ac13c80c" />
+
+```
+df["Highly Positive Skew_boxcox"], parameters=stats.boxcox(df["Highly Positive Skew"])
+df
+```
+<img width="1579" height="642" alt="image" src="https://github.com/user-attachments/assets/ec8f7399-2475-44b8-ad84-6da4ac3a02c2" />
+
+```
+df.skew()
+```
+<img width="495" height="356" alt="image" src="https://github.com/user-attachments/assets/7346d382-74d1-41d7-8093-82ce77b12fb6" />
+
+```
+df["Highly Negative Skew_yeojohnson"],parameters=stats.yeojohnson(df["Highly Negative Skew"])
+df.skew()
+```
+<img width="531" height="422" alt="image" src="https://github.com/user-attachments/assets/7d71204e-18cf-4ca6-9ce6-f8bd3e72ab9c" />
+
+```
+from sklearn.preprocessing import QuantileTransformer
+qt=QuantileTransformer(output_distribution='normal')
+df["Moderate Negative Skew_1"]=qt.fit_transform(df[["Moderate Negative Skew"]])
+df
+```
+<img width="1720" height="532" alt="image" src="https://github.com/user-attachments/assets/424498be-1c84-4557-9148-02346c634dc0" />
+
+```
+import seaborn as sns
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+sm.qqplot(df["Moderate Negative Skew"],line='45')
+plt.show()
+```
+<img width="728" height="549" alt="image" src="https://github.com/user-attachments/assets/fc295671-8576-4bc8-8863-97a9691eccb1" />
+
+```
+sm.qqplot(np.reciprocal(df["Moderate Negative Skew"]),line='45')
+plt.show()
+```
+<img width="737" height="546" alt="image" src="https://github.com/user-attachments/assets/10720d85-365f-41af-be78-c577b258ace0" />
+
+```
+qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
+df["Moderate Negative Skew"]=qt.fit_transform(df[["Moderate Negative Skew"]])
+sm.qqplot(df["Moderate Negative Skew"],line='45')
+plt.show()
+```
+<img width="735" height="549" alt="image" src="https://github.com/user-attachments/assets/8a884eb7-ddeb-455d-be71-d1017f53d35f" />
+
+```
+df["Highly Negative Skew_1"]=qt.fit_transform(df[["Highly Negative Skew"]])
+sm.qqplot(df["Highly Negative Skew"],line='45')
+plt.show()
+```
+<img width="725" height="548" alt="image" src="https://github.com/user-attachments/assets/11c5f89e-030e-4018-9edb-5c1e7a51336d" />
+
+```
+df1=pd.read_csv("titanic_dataset.csv")
+df1
+```
+<img width="1458" height="512" alt="image" src="https://github.com/user-attachments/assets/3f3eea40-6420-4fe2-92a9-607ab39b952f" />
+
+```
+qt=QuantileTransformer(output_distribution='normal',n_quantiles=891)
+df1["Age_1"]=qt.fit_transform(df1[["Age"]])
+sm.qqplot(df1['Age'],line='45')
+plt.show()
+```
+<img width="721" height="552" alt="image" src="https://github.com/user-attachments/assets/5f7c17ca-c192-456d-a5fd-b7cc7c496f6e" />
+
+```
+sm.qqplot(df["Highly Negative Skew_1"],line='45')
+plt.show()
+```
+<img width="720" height="548" alt="image" src="https://github.com/user-attachments/assets/535bfeff-09f8-4df0-93b7-d8392ec6f9f8" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -135,6 +245,5 @@ df.skew()
 
 
 # RESULT:
-       # INCLUDE YOUR RESULT HERE
-
+Thus the given data, Feature Encoding, Transformation process and save the data to a file was performed successfully.
        
